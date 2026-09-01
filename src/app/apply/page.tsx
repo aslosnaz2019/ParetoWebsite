@@ -6,7 +6,7 @@ import { getApplyWindowStatus, daysUntilOpen } from "@/lib/apply-dates";
 export const metadata: Metadata = {
   title: "Apply — Pareto Investments",
   description:
-    "Pick a stock. Write a 300-word thesis. Defend it. Applications open August 15.",
+    "Show us how you think. Applications open August 15.",
 };
 
 export default function ApplyPage() {
@@ -16,8 +16,7 @@ export default function ApplyPage() {
     <main className="mx-edge py-20 md:py-28">
       <Eyebrow className="text-am-text/50">Apply</Eyebrow>
       <h1 className="mt-4 max-w-column font-serif text-[36px] leading-tight text-am-text sm:text-[44px]">
-        Pick a stock. Write a <em className="italic text-am-accent">300-word</em>{" "}
-        thesis. Defend it.
+        Show us how you <em className="italic text-am-accent">think</em>.
       </h1>
 
       {status === "before" && (

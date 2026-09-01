@@ -8,7 +8,7 @@ import { StatsBar } from "@/components/home/stats-bar";
 import { Reveal } from "@/components/reveal";
 
 const snapSection =
-  "mx-edge flex min-h-screen flex-col justify-center py-24 sm:snap-start sm:scroll-mt-[72px]";
+  "mx-edge flex min-h-0 flex-col justify-center py-16 sm:min-h-[50vh] sm:py-10 sm:snap-start sm:scroll-mt-[72px]";
 
 export default function Home() {
   return (

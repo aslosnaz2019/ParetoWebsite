@@ -13,8 +13,7 @@ export function ApplyTeaser() {
     <div className="max-w-column">
       <Tagline className="text-am-text/50">Apply</Tagline>
       <h2 className="mt-3 font-serif text-[28px] leading-tight text-am-text sm:text-[34px]">
-        Pick a stock. Write a <em className="italic text-am-accent">300-word</em> thesis.
-        Defend it.
+        Show us how you <em className="italic text-am-accent">think</em>.
       </h2>
 
       {status === "before" && (
