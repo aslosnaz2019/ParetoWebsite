@@ -3,8 +3,10 @@ import { Eyebrow, Tagline } from "@/components/brand/eyebrow";
 import { CoverageTeamsGrid } from "@/components/brand/coverage-teams-grid";
 import { FoundingPostureGrid } from "@/components/brand/founding-posture-grid";
 import { ApplyTeaser } from "@/components/home/apply-teaser";
+import { HeroPhotos } from "@/components/home/hero-photos";
 import { HubsSection } from "@/components/home/hubs-section";
 import { StatsBar } from "@/components/home/stats-bar";
+import { StockTicker } from "@/components/home/stock-ticker";
 import { Reveal } from "@/components/reveal";
 
 const snapSection =
@@ -15,30 +17,33 @@ export default function Home() {
     <main className="sm:h-screen sm:overflow-y-auto sm:snap-y sm:snap-proximity motion-reduce:snap-none">
       {/* Hero */}
       <section className={snapSection}>
-        <Reveal className="mx-auto max-w-column text-center">
-          <Eyebrow className="text-am-text/50">Pareto Investments</Eyebrow>
-          <h1 className="mt-6 font-serif text-[30px] leading-[1.1] text-am-text sm:text-[44px]">
-            An <em className="not-italic text-am-accent italic">independent</em> student-led
-            investment society.
-          </h1>
-          <p className="mt-5 font-serif text-[16px] leading-relaxed text-am-text/75">
-            Capped membership. Published research. Three coverage teams, each running a
-            €1M virtual mandate. Two chapters, one publishing standard.
-          </p>
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-            <Link
-              href="/apply"
-              className="inline-block border border-am-text px-6 py-3 font-sans text-[13px] tracking-label uppercase text-am-text transition-colors hover:bg-am-text hover:text-am-bg"
-            >
-              Apply
-            </Link>
-            <Link
-              href="/society"
-              className="inline-block px-6 py-3 font-sans text-[13px] tracking-label uppercase text-am-accent transition-colors hover:text-am-text"
-            >
-              The Society →
-            </Link>
+        <Reveal className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-12 md:grid-cols-[1.1fr_0.9fr] md:gap-16">
+          <div className="text-center md:text-left">
+            <Eyebrow className="text-am-text/50">Pareto Investments</Eyebrow>
+            <h1 className="mt-6 font-serif text-[30px] leading-[1.1] text-am-text sm:text-[44px]">
+              An <em className="not-italic text-am-accent italic">independent</em> student-led
+              investment society.
+            </h1>
+            <p className="mt-5 font-serif text-[16px] leading-relaxed text-am-text/75">
+              Capped membership. Published research. Three coverage teams, each running a
+              €1M virtual mandate. Two chapters, one publishing standard.
+            </p>
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-4 md:justify-start">
+              <Link
+                href="/apply"
+                className="inline-block border border-am-text px-6 py-3 font-sans text-[13px] tracking-label uppercase text-am-text transition-colors hover:bg-am-text hover:text-am-bg"
+              >
+                Apply
+              </Link>
+              <Link
+                href="/society"
+                className="inline-block px-6 py-3 font-sans text-[13px] tracking-label uppercase text-am-accent transition-colors hover:text-am-text"
+              >
+                The Society →
+              </Link>
+            </div>
           </div>
+          <HeroPhotos />
         </Reveal>
       </section>
 
@@ -48,6 +53,9 @@ export default function Home() {
           <Tagline className="text-center text-am-text/50">By The Numbers</Tagline>
           <div className="mt-10">
             <StatsBar />
+          </div>
+          <div className="mt-12">
+            <StockTicker />
           </div>
         </Reveal>
       </section>

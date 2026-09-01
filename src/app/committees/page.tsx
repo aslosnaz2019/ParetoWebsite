@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Eyebrow, PageNumber, Tagline } from "@/components/brand/eyebrow";
+import {
+  AssetManagementIcon,
+  EventsIcon,
+  MarketingIcon,
+  PrivateEquityIcon,
+  VentureGrowthIcon,
+} from "@/components/brand/committee-icons";
 import { committees } from "@/lib/committees";
 
 export const metadata: Metadata = {
@@ -13,6 +20,14 @@ const accentClasses: Record<string, string> = {
   am: "text-am-accent",
   pe: "text-pe-gold",
   vc: "text-vc-accent",
+};
+
+const committeeIcons: Record<string, React.ComponentType<{ className?: string }>> = {
+  "asset-management": AssetManagementIcon,
+  "private-equity": PrivateEquityIcon,
+  "venture-growth": VentureGrowthIcon,
+  events: EventsIcon,
+  marketing: MarketingIcon,
 };
 
 export default function CommitteesPage() {
@@ -83,10 +98,20 @@ export default function CommitteesPage() {
         {committees.map((committee) => (
           <section key={committee.id} className="grid grid-cols-1 gap-8 py-16 md:grid-cols-[240px_1fr]">
             <div>
+              {(() => {
+                const Icon = committeeIcons[committee.id];
+                return Icon ? (
+                  <Icon
+                    className={`h-7 w-7 ${
+                      committee.palette ? accentClasses[committee.palette] : "text-am-text/60"
+                    }`}
+                  />
+                ) : null;
+              })()}
               {committee.number ? (
-                <PageNumber n={committee.number} className="text-am-text/40" />
+                <PageNumber n={committee.number} className="mt-4 block text-am-text/40" />
               ) : (
-                <Tagline className="text-am-text/40">Committee</Tagline>
+                <Tagline className="mt-4 block text-am-text/40">Committee</Tagline>
               )}
               <h2 className="mt-3 font-serif text-[26px] leading-tight text-am-text">
                 {committee.name}

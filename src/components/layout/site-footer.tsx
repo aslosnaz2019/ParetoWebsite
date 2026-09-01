@@ -7,7 +7,7 @@ export function SiteFooter() {
   return (
     <footer>
       <div className="mt-6 border-t-4 border-vc-gold" />
-      <div className="bg-vc-bg">
+      <div className="relative bg-vc-bg grain">
         <div className="mx-edge py-10">
           <div className="flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
             <div className="origin-left scale-90">

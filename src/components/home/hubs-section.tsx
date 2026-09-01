@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Eyebrow, Tagline } from "@/components/brand/eyebrow";
 import { NetherlandsMap } from "@/components/brand/netherlands-map";
@@ -6,12 +7,14 @@ const hubs = [
   {
     name: "Rotterdam",
     href: "/rotterdam",
+    image: "/images/rotterdam.jpg",
     status: "Founding chapter",
     description: "Home base. Three coverage teams, live since 2026.",
   },
   {
     name: "Eindhoven",
     href: "/eindhoven",
+    image: "/images/eindhoven.jpg",
     status: "Opening February 2027",
     description: "The second chapter — engineering-led, opening next.",
   },
@@ -40,14 +43,22 @@ export function HubsSection() {
           <Link
             key={hub.name}
             href={hub.href}
-            className="group border border-am-text/15 p-6 transition-colors hover:border-am-text/40"
+            className="group relative isolate flex min-h-[200px] flex-col justify-end overflow-hidden border border-am-text/15 p-6"
           >
-            <Tagline className="text-am-text/45">{hub.status}</Tagline>
-            <h3 className="mt-2 font-serif text-[20px] text-am-text">{hub.name}</h3>
-            <p className="mt-2 font-serif text-[14px] leading-relaxed text-am-text/60">
+            <Image
+              src={hub.image}
+              alt=""
+              fill
+              sizes="(min-width: 640px) 320px, 90vw"
+              className="-z-10 object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 -z-10 bg-am-text/70 transition-colors group-hover:bg-am-text/60" />
+            <Tagline className="text-am-gold/80">{hub.status}</Tagline>
+            <h3 className="mt-2 font-serif text-[20px] text-am-bg">{hub.name}</h3>
+            <p className="mt-2 font-serif text-[14px] leading-relaxed text-am-bg/75">
               {hub.description}
             </p>
-            <span className="mt-4 inline-block font-sans text-[12px] tracking-label uppercase text-am-accent">
+            <span className="mt-4 inline-block font-sans text-[12px] tracking-label uppercase text-am-gold">
               Visit {hub.name} →
             </span>
           </Link>
