@@ -7,6 +7,7 @@ import { Tagline } from "@/components/brand/eyebrow";
 
 const mainLinks = [
   { href: "/society", label: "Society" },
+  { href: "/committees", label: "Committees" },
   { href: "/our-team", label: "Our Team" },
 ];
 

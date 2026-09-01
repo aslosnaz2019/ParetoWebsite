@@ -62,6 +62,12 @@ export default function Home() {
           <div className="mt-10">
             <CoverageTeamsGrid />
           </div>
+          <Link
+            href="/committees"
+            className="mt-8 inline-block font-sans text-[12px] tracking-label uppercase text-am-accent"
+          >
+            See all five committees, including Events &amp; Marketing →
+          </Link>
         </Reveal>
       </section>
 
