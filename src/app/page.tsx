@@ -54,10 +54,10 @@ export default function Home() {
           <div className="mt-10">
             <StatsBar />
           </div>
-          <div className="mt-12">
-            <StockTicker />
-          </div>
         </Reveal>
+        <div className="relative left-1/2 mt-12 w-screen -translate-x-1/2">
+          <StockTicker />
+        </div>
       </section>
 
       {/* Coverage teams / departments */}
