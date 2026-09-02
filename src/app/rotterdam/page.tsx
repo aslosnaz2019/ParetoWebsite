@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Eyebrow, Tagline } from "@/components/brand/eyebrow";
 import { CoverageTeamsGrid } from "@/components/brand/coverage-teams-grid";
@@ -5,10 +6,26 @@ import { CoverageTeamsGrid } from "@/components/brand/coverage-teams-grid";
 export default function Home() {
   return (
     <main>
+      {/* Photo band — bright, daytime, live chapter */}
+      <section className="relative left-1/2 w-screen -translate-x-1/2">
+        <div className="relative h-[42vh] min-h-[280px] overflow-hidden">
+          <Image
+            src="/images/rotterdam.jpg"
+            alt="Rotterdam skyline"
+            fill
+            sizes="100vw"
+            priority
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-am-text/15 via-transparent to-am-bg" />
+        </div>
+      </section>
+
       {/* Hero */}
-      <section className="relative mx-edge pt-10 pb-24 md:pt-14 md:pb-32">
-        <div className="mx-auto mt-24 max-w-column text-center md:mt-32">
-          <Eyebrow className="text-am-text/66">Pareto Investments · MMXXVI</Eyebrow>
+      <section className="relative mx-edge pb-24 pt-4 md:pb-32">
+        <div className="mx-auto -mt-6 max-w-column text-center">
+          <Tagline className="text-am-accent">Founding Chapter · Live Since 2026</Tagline>
+          <Eyebrow className="mt-4 text-am-text/66">Pareto Investments · MMXXVI</Eyebrow>
           <h1 className="mt-6 font-serif text-[40px] leading-[1.1] text-am-text sm:text-[52px]">
             An <em className="not-italic text-am-accent italic">independent</em> student-led
             investment society.

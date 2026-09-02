@@ -6,6 +6,7 @@ import { BrandLockup } from "@/components/brand/brand-lockup";
 import { Tagline } from "@/components/brand/eyebrow";
 
 const mainLinks = [
+  { href: "/about", label: "About Us" },
   { href: "/society", label: "Society" },
   { href: "/committees", label: "Committees" },
   { href: "/our-team", label: "Our Team" },
