@@ -7,9 +7,10 @@ import { SAMPLE_QUOTES, type Quote } from "@/lib/market-data";
 /**
  * A slow, continuous scroll of coverage-adjacent tickers. Falls back to
  * clearly-labelled sample data until FINNHUB_API_KEY is configured — see
- * .env.local.example.
+ * .env.local.example. `dark` renders it for placement directly on a dark
+ * (photo hero) background instead of the default parchment page.
  */
-export function StockTicker() {
+export function StockTicker({ dark = false }: { dark?: boolean }) {
   const [quotes, setQuotes] = useState<Quote[]>(SAMPLE_QUOTES);
   const [isLive, setIsLive] = useState(false);
 
@@ -33,32 +34,36 @@ export function StockTicker() {
 
   const track = [...quotes, ...quotes];
 
+  const border = dark ? "border-am-bg/15" : "border-am-text/10";
+  const dotOff = dark ? "bg-am-bg/30" : "bg-am-text/30";
+  const label = dark ? "text-am-bg/65" : "text-am-text/60";
+  const symbol = dark ? "text-am-bg/70" : "text-am-text/66";
+  const price = dark ? "text-am-bg" : "text-am-text";
+  const positive = dark ? "text-emerald-400" : "text-emerald-700";
+  const negative = dark ? "text-am-gold" : "text-am-accent";
+
   return (
-    <div className="border-y border-am-text/10 py-3">
+    <div className={`border-y ${border} py-3`}>
       <div className="mb-2 flex items-center justify-center gap-2">
         <span
-          className={`h-1.5 w-1.5 rounded-full ${isLive ? "bg-am-accent" : "bg-am-text/30"}`}
+          className={`h-1.5 w-1.5 rounded-full ${isLive ? "bg-am-accent" : dotOff}`}
           aria-hidden="true"
         />
-        <Tagline className="text-am-text/60">
-          {isLive ? "Live Market" : "Sample Market Data"}
-        </Tagline>
+        <Tagline className={label}>{isLive ? "Live Market" : "Sample Market Data"}</Tagline>
       </div>
 
       <div className="group relative overflow-hidden">
         <div className="animate-ticker flex w-max gap-10 group-hover:[animation-play-state:paused]">
           {track.map((q, i) => (
             <div key={`${q.symbol}-${i}`} className="flex shrink-0 items-baseline gap-2">
-              <span className="font-sans text-[12px] tracking-label uppercase text-am-text/66">
+              <span className={`font-sans text-[12px] tracking-label uppercase ${symbol}`}>
                 {q.symbol}
               </span>
-              <span className="font-serif text-[15px] text-am-text">
+              <span className={`font-serif text-[15px] ${price}`}>
                 {q.price.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
               </span>
               <span
-                className={`font-sans text-[12px] ${
-                  q.changePercent >= 0 ? "text-emerald-700" : "text-am-accent"
-                }`}
+                className={`font-sans text-[12px] ${q.changePercent >= 0 ? positive : negative}`}
               >
                 {q.changePercent >= 0 ? "+" : ""}
                 {q.changePercent.toFixed(1)}%

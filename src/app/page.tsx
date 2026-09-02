@@ -5,6 +5,7 @@ import { CoverageTeamsGrid } from "@/components/brand/coverage-teams-grid";
 import { FoundingPostureGrid } from "@/components/brand/founding-posture-grid";
 import { ApplyTeaser } from "@/components/home/apply-teaser";
 import { HubsSection } from "@/components/home/hubs-section";
+import { StockTicker } from "@/components/home/stock-ticker";
 import { Reveal } from "@/components/reveal";
 
 const snapSection =
@@ -12,7 +13,7 @@ const snapSection =
 
 export default function Home() {
   return (
-    <main className="sm:h-screen sm:overflow-y-auto sm:overflow-x-hidden sm:snap-y sm:snap-proximity motion-reduce:snap-none">
+    <main>
       {/* Hero — full-bleed, split Rotterdam / Eindhoven photography */}
       <section className="relative left-1/2 w-screen -translate-x-1/2 sm:snap-start sm:scroll-mt-[72px]">
         <div className="relative flex h-[82vh] min-h-[560px] items-end overflow-hidden">
@@ -66,6 +67,9 @@ export default function Home() {
               </div>
             </Reveal>
           </div>
+        </div>
+        <div className="bg-am-text">
+          <StockTicker dark />
         </div>
       </section>
 

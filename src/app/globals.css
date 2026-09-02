@@ -18,6 +18,23 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Homepage scroll-snap sections. This lives on the real document scroll
+   (not a nested h-screen/overflow-auto container) so the footer can only
+   ever be reached by scrolling through all of the sections above it —
+   a nested scroll container previously let the outer page jump straight
+   to the footer while the inner one was still mid-scroll. */
+@media (min-width: 640px) {
+  html {
+    scroll-snap-type: y proximity;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-snap-type: none;
+  }
+}
+
 body {
   color: var(--foreground);
   background: var(--background);

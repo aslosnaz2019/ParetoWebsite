@@ -3,10 +3,14 @@ type EyebrowProps = {
   className?: string;
 };
 
-/** 8px-equivalent tracked label used above headlines. */
+/** 8px-equivalent tracked label used above headlines, with a short accent
+ * rule before the text (echoes the "— EST. 2017" kicker treatment). */
 export function Eyebrow({ children, className = "" }: EyebrowProps) {
   return (
-    <p className={`font-sans text-[11px] tracking-eyebrow uppercase ${className}`}>
+    <p
+      className={`inline-flex items-center gap-3 font-sans text-[11px] tracking-eyebrow uppercase ${className}`}
+    >
+      <span className="h-px w-8 bg-current opacity-50" aria-hidden="true" />
       {children}
     </p>
   );
