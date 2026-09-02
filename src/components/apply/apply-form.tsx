@@ -85,7 +85,7 @@ export function ApplyForm() {
         <p className="font-serif text-[20px] leading-relaxed text-am-text">
           Thesis received. A confirmation email is on its way.
         </p>
-        <p className="mt-4 font-serif text-[15px] leading-relaxed text-am-text/60">
+        <p className="mt-4 font-serif text-[15px] leading-relaxed text-am-text/72">
           The founder board reviews applications after September 20.
         </p>
       </div>
@@ -100,7 +100,7 @@ export function ApplyForm() {
           <span
             key={label}
             className={`font-sans text-[11px] tracking-label uppercase ${
-              i === step ? "text-am-accent" : i < step ? "text-am-text/50" : "text-am-text/25"
+              i === step ? "text-am-accent" : i < step ? "text-am-text/66" : "text-am-text/45"
             }`}
           >
             {`0${i + 1}`} {label}
@@ -151,7 +151,7 @@ export function ApplyForm() {
 
         {step === 1 && (
           <div className="space-y-4">
-            <p className="font-sans text-[12px] tracking-label uppercase text-am-text/50">
+            <p className="font-sans text-[12px] tracking-label uppercase text-am-text/66">
               Committee preference
             </p>
             {(
@@ -182,7 +182,7 @@ export function ApplyForm() {
 
         {step === 2 && (
           <div>
-            <p className="font-sans text-[12px] tracking-label uppercase text-am-text/50">
+            <p className="font-sans text-[12px] tracking-label uppercase text-am-text/66">
               Pick a stock. Write a 300-word thesis. Defend it.
             </p>
             <textarea
@@ -193,7 +193,7 @@ export function ApplyForm() {
             />
             <p
               className={`mt-2 font-sans text-[12px] tracking-label ${
-                thesisValid ? "text-am-text/50" : "text-am-accent"
+                thesisValid ? "text-am-text/66" : "text-am-accent"
               }`}
             >
               {words} words (300 minimum, 400 maximum)
@@ -203,7 +203,7 @@ export function ApplyForm() {
 
         {step === 3 && (
           <div>
-            <p className="font-sans text-[12px] tracking-label uppercase text-am-text/50">
+            <p className="font-sans text-[12px] tracking-label uppercase text-am-text/66">
               CV upload (optional)
             </p>
             <label className="mt-4 flex cursor-pointer flex-col items-start gap-2 border border-dashed border-am-text/25 px-6 py-8">
@@ -218,7 +218,7 @@ export function ApplyForm() {
               <span className="font-serif text-[15px] text-am-text">
                 {form.cvFileName ?? "Choose a file"}
               </span>
-              <span className="font-sans text-[11px] tracking-label uppercase text-am-text/40">
+              <span className="font-sans text-[11px] tracking-label uppercase text-am-text/60">
                 PDF or Word, up to 5MB
               </span>
             </label>
@@ -247,7 +247,7 @@ export function ApplyForm() {
           type="button"
           onClick={() => setStep((s) => Math.max(0, s - 1))}
           disabled={step === 0}
-          className="font-sans text-[12px] tracking-label uppercase text-am-text/50 disabled:opacity-0"
+          className="font-sans text-[12px] tracking-label uppercase text-am-text/66 disabled:opacity-0"
         >
           ← Back
         </button>
@@ -282,7 +282,7 @@ const inputClass =
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div>
-      <label className="mb-2 block font-sans text-[12px] tracking-label uppercase text-am-text/50">
+      <label className="mb-2 block font-sans text-[12px] tracking-label uppercase text-am-text/66">
         {label}
       </label>
       {children}
@@ -293,7 +293,7 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
 function ReviewRow({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex justify-between border-b border-am-text/10 pb-3">
-      <span className="font-sans text-[12px] tracking-label uppercase text-am-text/50">
+      <span className="font-sans text-[12px] tracking-label uppercase text-am-text/66">
         {label}
       </span>
       <span className="max-w-[60%] text-right font-serif text-[15px] text-am-text">

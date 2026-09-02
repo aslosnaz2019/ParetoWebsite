@@ -28,7 +28,7 @@ export function HubsSection() {
   return (
     <div className="w-full">
       <div className="text-center">
-        <Eyebrow className="text-am-text/50">Our Hubs</Eyebrow>
+        <Eyebrow className="text-am-text/66">Our Hubs</Eyebrow>
         <h2 className="mt-3 font-serif text-[28px] leading-tight text-am-text sm:text-[34px]">
           One society, <em className="not-italic italic text-am-accent">two</em> chapters.
         </h2>
@@ -43,7 +43,7 @@ export function HubsSection() {
           <Link
             key={hub.name}
             href={hub.href}
-            className="group relative isolate flex min-h-[200px] flex-col justify-end overflow-hidden border border-am-text/15 p-6"
+            className="group relative isolate flex min-h-[200px] flex-col justify-end overflow-hidden border border-am-text/15 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-am-text/30 hover:shadow-xl"
           >
             <Image
               src={hub.image}
@@ -58,8 +58,9 @@ export function HubsSection() {
             <p className="mt-2 font-serif text-[14px] leading-relaxed text-am-bg/75">
               {hub.description}
             </p>
-            <span className="mt-4 inline-block font-sans text-[12px] tracking-label uppercase text-am-gold">
-              Visit {hub.name} →
+            <span className="mt-4 inline-flex items-center gap-1 font-sans text-[12px] tracking-label uppercase text-am-gold">
+              Visit {hub.name}
+              <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
             </span>
           </Link>
         ))}

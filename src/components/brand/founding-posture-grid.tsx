@@ -10,7 +10,7 @@ export function FoundingPostureGrid() {
       {foundingPosture.map((pillar) => (
         <div key={pillar.title} className="max-w-[220px]">
           <h3 className="font-serif text-[16px] text-am-text">{pillar.title}</h3>
-          <p className="mt-2 font-serif text-[14px] leading-relaxed text-am-text/65">
+          <p className="mt-2 font-serif text-[14px] leading-relaxed text-am-text/75">
             {pillar.body}
           </p>
         </div>

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function DecisionsPage() {
   return (
     <main className="mx-edge py-20 md:py-28">
-      <Eyebrow className="text-am-text/50">Decisions Log</Eyebrow>
+      <Eyebrow className="text-am-text/66">Decisions Log</Eyebrow>
       <h1 className="mt-4 max-w-column font-serif text-[36px] leading-tight text-am-text sm:text-[44px]">
         Reasoning, made public.
       </h1>
@@ -24,7 +24,7 @@ export default function DecisionsPage() {
             <h2 className="mt-2 font-serif text-[22px] leading-snug text-am-text">
               {decision.title}
             </h2>
-            <p className="mt-4 font-serif text-[16px] leading-relaxed text-am-text/75">
+            <p className="mt-4 font-serif text-[16px] leading-relaxed text-am-text/82">
               {decision.reasoning}
             </p>
           </li>

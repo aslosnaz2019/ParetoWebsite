@@ -57,7 +57,7 @@ function DropdownGroup({
             <li key={link.label}>
               <Link
                 href={link.href}
-                className="block px-4 py-2 font-serif text-[15px] text-am-text hover:bg-am-text/5 hover:text-am-accent"
+                className="block px-4 py-2 font-serif text-[15px] text-am-text transition-colors duration-150 hover:bg-am-text/5 hover:text-am-accent"
               >
                 {link.label}
               </Link>
@@ -108,7 +108,7 @@ export function SiteHeader() {
         <div className="border-t-4 border-am-gold bg-am-bg md:hidden">
           <div className="mx-edge grid grid-cols-1 gap-8 py-8">
             <div>
-              <Tagline className="mb-3 text-am-text/50">Main</Tagline>
+              <Tagline className="mb-3 text-am-text/66">Main</Tagline>
               <ul className="space-y-2">
                 {mainLinks.map((link) => (
                   <li key={link.label}>
@@ -125,7 +125,7 @@ export function SiteHeader() {
             </div>
 
             <div>
-              <Tagline className="mb-3 text-am-text/50">Insights</Tagline>
+              <Tagline className="mb-3 text-am-text/66">Insights</Tagline>
               <ul className="space-y-2">
                 {insightsLinks.map((link) => (
                   <li key={link.label}>
@@ -142,7 +142,7 @@ export function SiteHeader() {
             </div>
 
             <div>
-              <Tagline className="mb-3 text-am-text/50">Timeline</Tagline>
+              <Tagline className="mb-3 text-am-text/66">Timeline</Tagline>
               <ul className="space-y-2">
                 {timelineLinks.map((link) => (
                   <li key={link.label}>
@@ -159,7 +159,7 @@ export function SiteHeader() {
             </div>
 
             <div>
-              <Tagline className="mb-3 text-am-text/50">Join</Tagline>
+              <Tagline className="mb-3 text-am-text/66">Join</Tagline>
               <ul className="space-y-2">
                 {joinLinks.map((link) => (
                   <li key={link.label}>

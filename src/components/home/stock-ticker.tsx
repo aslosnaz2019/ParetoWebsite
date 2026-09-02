@@ -40,7 +40,7 @@ export function StockTicker() {
           className={`h-1.5 w-1.5 rounded-full ${isLive ? "bg-am-accent" : "bg-am-text/30"}`}
           aria-hidden="true"
         />
-        <Tagline className="text-am-text/40">
+        <Tagline className="text-am-text/60">
           {isLive ? "Live Market" : "Sample Market Data"}
         </Tagline>
       </div>
@@ -49,7 +49,7 @@ export function StockTicker() {
         <div className="animate-ticker flex w-max gap-10 group-hover:[animation-play-state:paused]">
           {track.map((q, i) => (
             <div key={`${q.symbol}-${i}`} className="flex shrink-0 items-baseline gap-2">
-              <span className="font-sans text-[12px] tracking-label uppercase text-am-text/50">
+              <span className="font-sans text-[12px] tracking-label uppercase text-am-text/66">
                 {q.symbol}
               </span>
               <span className="font-serif text-[15px] text-am-text">

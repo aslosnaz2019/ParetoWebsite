@@ -19,19 +19,19 @@ export default function Home() {
       <section className={snapSection}>
         <Reveal className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-12 md:grid-cols-[1.1fr_0.9fr] md:gap-16">
           <div className="text-center md:text-left">
-            <Eyebrow className="text-am-text/50">Pareto Investments</Eyebrow>
+            <Eyebrow className="text-am-text/66">Pareto Investments</Eyebrow>
             <h1 className="mt-6 font-serif text-[30px] leading-[1.1] text-am-text sm:text-[44px]">
               An <em className="not-italic text-am-accent italic">independent</em> student-led
               investment society.
             </h1>
-            <p className="mt-5 font-serif text-[16px] leading-relaxed text-am-text/75">
+            <p className="mt-5 font-serif text-[16px] leading-relaxed text-am-text/82">
               Capped membership. Published research. Three coverage teams, each running a
               €1M virtual mandate. Two chapters, one publishing standard.
             </p>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-4 md:justify-start">
               <Link
                 href="/apply"
-                className="inline-block border border-am-text px-6 py-3 font-sans text-[13px] tracking-label uppercase text-am-text transition-colors hover:bg-am-text hover:text-am-bg"
+                className="inline-block border border-am-text px-6 py-3 font-sans text-[13px] tracking-label uppercase text-am-text transition-all duration-200 hover:scale-[1.03] hover:bg-am-text hover:text-am-bg active:scale-[0.98]"
               >
                 Apply
               </Link>
@@ -50,7 +50,7 @@ export default function Home() {
       {/* Stats */}
       <section className={snapSection}>
         <Reveal className="mx-auto w-full max-w-4xl">
-          <Tagline className="text-center text-am-text/50">By The Numbers</Tagline>
+          <Tagline className="text-center text-am-text/66">By The Numbers</Tagline>
           <div className="mt-10">
             <StatsBar />
           </div>
@@ -63,7 +63,7 @@ export default function Home() {
       {/* Coverage teams / departments */}
       <section className={snapSection}>
         <Reveal className="mx-auto w-full max-w-4xl">
-          <Tagline className="text-am-text/50">Coverage Teams</Tagline>
+          <Tagline className="text-am-text/66">Coverage Teams</Tagline>
           <h2 className="mt-3 max-w-column font-serif text-[26px] leading-tight text-am-text sm:text-[32px]">
             Three departments, one publishing standard.
           </h2>
@@ -82,7 +82,7 @@ export default function Home() {
       {/* Founding posture */}
       <section className={snapSection}>
         <Reveal className="mx-auto w-full max-w-5xl">
-          <Tagline className="text-am-text/50">Founding Posture</Tagline>
+          <Tagline className="text-am-text/66">Founding Posture</Tagline>
           <h2 className="mt-3 max-w-column font-serif text-[26px] leading-tight text-am-text sm:text-[32px]">
             The discipline is the <em className="italic text-am-accent">brand</em>.
           </h2>

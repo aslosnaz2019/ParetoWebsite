@@ -9,14 +9,14 @@ export const metadata: Metadata = {
 export default function PressPage() {
   return (
     <main className="mx-edge py-20 md:py-28">
-      <Eyebrow className="text-am-text/50">Press &amp; Contact</Eyebrow>
+      <Eyebrow className="text-am-text/66">Press &amp; Contact</Eyebrow>
       <h1 className="mt-4 max-w-column font-serif text-[36px] leading-tight text-am-text sm:text-[44px]">
         One line to the right person.
       </h1>
 
       <div className="mt-16 grid grid-cols-1 gap-16 md:grid-cols-2">
         <div>
-          <Tagline className="text-am-text/50">Press Inquiries</Tagline>
+          <Tagline className="text-am-text/66">Press Inquiries</Tagline>
           <a
             href="mailto:paretoinvestment1@gmail.com"
             className="mt-4 inline-block font-sans text-[13px] tracking-label uppercase text-am-accent"
@@ -25,8 +25,8 @@ export default function PressPage() {
           </a>
         </div>
         <div>
-          <Tagline className="text-am-text/50">Partnerships</Tagline>
-          <p className="mt-4 font-serif text-[16px] leading-relaxed text-am-text/70">
+          <Tagline className="text-am-text/66">Partnerships</Tagline>
+          <p className="mt-4 font-serif text-[16px] leading-relaxed text-am-text/78">
             Same inbox — lead with &quot;Partnership&quot; in the subject line.
           </p>
           <a
@@ -39,7 +39,7 @@ export default function PressPage() {
       </div>
 
       <div className="mt-16 border-t border-am-text/10 pt-12">
-        <Tagline className="text-am-text/50">Follow</Tagline>
+        <Tagline className="text-am-text/66">Follow</Tagline>
         <div className="mt-4 flex gap-6">
           <a
             href="https://www.instagram.com/paretoinvestmentsociety"
@@ -61,8 +61,8 @@ export default function PressPage() {
       </div>
 
       <div className="mt-24 border-t-4 border-am-gold pt-16">
-        <Tagline className="text-am-text/50">Recent Mentions</Tagline>
-        <p className="mt-6 max-w-column font-serif text-[15px] leading-relaxed text-am-text/50">
+        <Tagline className="text-am-text/66">Recent Mentions</Tagline>
+        <p className="mt-6 max-w-column font-serif text-[15px] leading-relaxed text-am-text/66">
           Empty until the first press hit.
         </p>
       </div>

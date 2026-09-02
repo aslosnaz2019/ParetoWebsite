@@ -8,11 +8,11 @@ export default function Eindhoven() {
     <main className="relative mx-edge flex min-h-[80vh] flex-col items-center justify-center pt-10 pb-24 text-center md:pt-14 md:pb-32">
       <CornerBrackets />
       <BrandLockup className="mb-16" />
-      <Eyebrow className="text-am-text/50">Pareto Investments · Eindhoven</Eyebrow>
+      <Eyebrow className="text-am-text/66">Pareto Investments · Eindhoven</Eyebrow>
       <h1 className="mt-6 font-serif text-[40px] leading-[1.1] text-am-text sm:text-[52px]">
         Coming <em className="not-italic text-am-accent italic">soon</em>&hellip;
       </h1>
-      <p className="mt-6 max-w-column font-serif text-[17px] leading-relaxed text-am-text/75">
+      <p className="mt-6 max-w-column font-serif text-[17px] leading-relaxed text-am-text/82">
         The Eindhoven chapter opens February 2027. The engineering team
         behind this platform is building it now.
       </p>

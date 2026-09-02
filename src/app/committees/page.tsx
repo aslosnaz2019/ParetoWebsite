@@ -33,13 +33,13 @@ const committeeIcons: Record<string, React.ComponentType<{ className?: string }>
 export default function CommitteesPage() {
   return (
     <main className="mx-edge py-20 md:py-28">
-      <Eyebrow className="text-am-text/50">Pareto Investments</Eyebrow>
+      <Eyebrow className="text-am-text/66">Pareto Investments</Eyebrow>
       <h1 className="mt-4 max-w-column font-serif text-[36px] leading-tight text-am-text sm:text-[44px]">
         Finance doesn&apos;t have to be boring.
       </h1>
 
       {/* Introduction */}
-      <div className="mt-16 max-w-column space-y-6 font-serif text-[17px] leading-relaxed text-am-text/80">
+      <div className="mt-16 max-w-column space-y-6 font-serif text-[17px] leading-relaxed text-am-text/86">
         <p>
           Most investment communities feel the same — formal, distant, full of jargon.
           We built Pareto Investment Society to do things differently.
@@ -81,7 +81,7 @@ export default function CommitteesPage() {
       <div className="mt-10 flex flex-wrap items-center gap-6">
         <Link
           href="/apply"
-          className="inline-block border border-am-text px-6 py-3 font-sans text-[13px] tracking-label uppercase text-am-text transition-colors hover:bg-am-text hover:text-am-bg"
+          className="inline-block border border-am-text px-6 py-3 font-sans text-[13px] tracking-label uppercase text-am-text transition-all duration-200 hover:scale-[1.03] hover:bg-am-text hover:text-am-bg active:scale-[0.98]"
         >
           Applications Are Rolling
         </Link>
@@ -103,15 +103,15 @@ export default function CommitteesPage() {
                 return Icon ? (
                   <Icon
                     className={`h-7 w-7 ${
-                      committee.palette ? accentClasses[committee.palette] : "text-am-text/60"
+                      committee.palette ? accentClasses[committee.palette] : "text-am-text/72"
                     }`}
                   />
                 ) : null;
               })()}
               {committee.number ? (
-                <PageNumber n={committee.number} className="mt-4 block text-am-text/40" />
+                <PageNumber n={committee.number} className="mt-4 block text-am-text/60" />
               ) : (
-                <Tagline className="mt-4 block text-am-text/40">Committee</Tagline>
+                <Tagline className="mt-4 block text-am-text/60">Committee</Tagline>
               )}
               <h2 className="mt-3 font-serif text-[26px] leading-tight text-am-text">
                 {committee.name}
@@ -129,18 +129,18 @@ export default function CommitteesPage() {
             </div>
 
             <div className="max-w-column">
-              <p className="font-serif text-[16px] leading-relaxed text-am-text/75">
+              <p className="font-serif text-[16px] leading-relaxed text-am-text/82">
                 {committee.description}
               </p>
 
-              <Tagline className="mt-8 text-am-text/45">
+              <Tagline className="mt-8 text-am-text/62">
                 Responsibility — what you&apos;ll own
               </Tagline>
               <ul className="mt-4 space-y-3 border-l border-am-text/10 pl-6">
                 {committee.responsibilities.map((item) => (
                   <li
                     key={item}
-                    className="font-serif text-[15px] leading-relaxed text-am-text/65"
+                    className="font-serif text-[15px] leading-relaxed text-am-text/75"
                   >
                     {item}
                   </li>

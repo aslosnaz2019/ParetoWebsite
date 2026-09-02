@@ -7,10 +7,11 @@ type Stat = {
   prefix?: string;
   suffix?: string;
   label: string;
+  noGroup?: boolean;
 };
 
 const stats: Stat[] = [
-  { value: 2026, label: "Founded in Rotterdam" },
+  { value: 2026, label: "Founded in Rotterdam", noGroup: true },
   { value: 2, label: "Chapters — Rotterdam & Eindhoven" },
   { value: 3, label: "Coverage teams" },
   { value: 1, prefix: "€", suffix: "M", label: "Virtual mandate, per team" },
@@ -53,10 +54,10 @@ function StatItem({ stat, active }: { stat: Stat; active: boolean }) {
     <div>
       <p className="font-serif text-[36px] leading-none text-am-text sm:text-[44px]">
         {stat.prefix}
-        {value.toLocaleString("en-US")}
+        {stat.noGroup ? value.toString() : value.toLocaleString("en-US")}
         {stat.suffix}
       </p>
-      <p className="mt-3 font-sans text-[11px] tracking-label uppercase text-am-text/55">
+      <p className="mt-3 font-sans text-[11px] tracking-label uppercase text-am-text/68">
         {stat.label}
       </p>
     </div>

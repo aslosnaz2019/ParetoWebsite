@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default function ResearchPage() {
   return (
     <main className="mx-edge py-20 md:py-28">
-      <Eyebrow className="text-am-text/50">Research</Eyebrow>
+      <Eyebrow className="text-am-text/66">Research</Eyebrow>
       <h1 className="mt-4 max-w-column font-serif text-[36px] leading-tight text-am-text sm:text-[44px]">
         Empty by design. For now.
       </h1>
@@ -18,14 +18,14 @@ export default function ResearchPage() {
         {["All", "Asset Management", "Private Equity", "Venture & Growth"].map((f) => (
           <span
             key={f}
-            className="font-sans text-[12px] tracking-label uppercase text-am-text/40"
+            className="font-sans text-[12px] tracking-label uppercase text-am-text/60"
           >
             {f}
           </span>
         ))}
       </div>
 
-      <p className="mt-16 max-w-column font-serif text-[18px] leading-relaxed text-am-text/70">
+      <p className="mt-16 max-w-column font-serif text-[18px] leading-relaxed text-am-text/78">
         The first quarterly drop publishes December 2026. Until then, this surface is
         empty by design.
       </p>
