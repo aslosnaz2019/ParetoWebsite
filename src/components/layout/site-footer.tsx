@@ -58,6 +58,12 @@ export function SiteFooter() {
               <Tagline className="text-vc-gold/60">
                 Pareto Investments · Rotterdam &amp; Eindhoven
               </Tagline>
+              <Link
+                href="/privacy"
+                className="font-sans text-[11px] tracking-label uppercase text-vc-gold/60 hover:text-vc-accent"
+              >
+                Privacy Policy
+              </Link>
             </div>
           </div>
         </div>

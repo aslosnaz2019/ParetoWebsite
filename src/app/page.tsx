@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { TrackedLink } from "@/components/analytics/tracked-link";
 import { Eyebrow, Tagline } from "@/components/brand/eyebrow";
 import { CoverageTeamsGrid } from "@/components/brand/coverage-teams-grid";
 import { FoundingPostureGrid } from "@/components/brand/founding-posture-grid";
@@ -52,12 +53,14 @@ export default function Home() {
                 €1M virtual mandate. Two chapters, one publishing standard.
               </p>
               <div className="mt-9 flex flex-wrap items-center gap-4">
-                <Link
+                <TrackedLink
                   href="/apply"
+                  event="apply_cta_click"
+                  eventData={{ source: "hero" }}
                   className="inline-block border border-am-bg px-6 py-3 font-sans text-[13px] tracking-label uppercase text-am-bg transition-all duration-200 hover:scale-[1.03] hover:bg-am-bg hover:text-am-text active:scale-[0.98]"
                 >
                   Apply
-                </Link>
+                </TrackedLink>
                 <Link
                   href="/about"
                   className="inline-block px-6 py-3 font-sans text-[13px] tracking-label uppercase text-am-gold transition-colors hover:text-am-bg"

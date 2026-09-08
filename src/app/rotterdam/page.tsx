@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { TrackedLink } from "@/components/analytics/tracked-link";
 import { Eyebrow, Tagline } from "@/components/brand/eyebrow";
 import { CoverageTeamsGrid } from "@/components/brand/coverage-teams-grid";
 
@@ -35,12 +36,14 @@ export default function Home() {
             €1M virtual mandate.
           </p>
           <div className="mt-10">
-            <Link
+            <TrackedLink
               href="/apply"
+              event="apply_cta_click"
+              eventData={{ source: "rotterdam_page" }}
               className="inline-block border border-am-text px-6 py-3 font-sans text-[13px] tracking-label uppercase text-am-text transition-all duration-200 hover:scale-[1.03] hover:bg-am-text hover:text-am-bg active:scale-[0.98]"
             >
               Applications open August 15
-            </Link>
+            </TrackedLink>
           </div>
         </div>
       </section>

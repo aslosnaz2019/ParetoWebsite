@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { TrackedLink } from "@/components/analytics/tracked-link";
 import { Eyebrow, PageNumber, Tagline } from "@/components/brand/eyebrow";
 import {
   AssetManagementIcon,
@@ -79,17 +80,19 @@ export default function CommitteesPage() {
       </div>
 
       <div className="mt-10 flex flex-wrap items-center gap-6">
-        <Link
+        <TrackedLink
           href="/apply"
+          event="apply_cta_click"
+          eventData={{ source: "committees_page" }}
           className="inline-block border border-am-text px-6 py-3 font-sans text-[13px] tracking-label uppercase text-am-text transition-all duration-200 hover:scale-[1.03] hover:bg-am-text hover:text-am-bg active:scale-[0.98]"
         >
           Applications Are Rolling
-        </Link>
+        </TrackedLink>
         <a
-          href="mailto:paretoinvestment1@gmail.com"
+          href="mailto:info@paretoinvestment.nl"
           className="font-sans text-[12px] tracking-label uppercase text-am-accent hover:text-am-text"
         >
-          Questions? paretoinvestment1@gmail.com
+          Questions? info@paretoinvestment.nl
         </a>
       </div>
 

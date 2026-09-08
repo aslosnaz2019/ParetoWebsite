@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { BrandLockup } from "@/components/brand/brand-lockup";
 import { Tagline } from "@/components/brand/eyebrow";
+import { track } from "@vercel/analytics";
 
 const mainLinks = [
   { href: "/about", label: "About Us" },
@@ -58,6 +59,7 @@ function DropdownGroup({
             <li key={link.label}>
               <Link
                 href={link.href}
+                onClick={() => link.label === "Apply Now" && track("apply_cta_click", { source: "header_nav" })}
                 className="block px-4 py-2 font-serif text-[15px] text-am-text transition-colors duration-150 hover:bg-am-text/5 hover:text-am-accent"
               >
                 {link.label}
@@ -198,7 +200,10 @@ export function SiteHeader() {
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      onClick={() => setMobileOpen(false)}
+                      onClick={() => {
+                        if (link.label === "Apply Now") track("apply_cta_click", { source: "mobile_nav" });
+                        setMobileOpen(false);
+                      }}
                       className="font-serif text-[16px] text-am-text"
                     >
                       {link.label}

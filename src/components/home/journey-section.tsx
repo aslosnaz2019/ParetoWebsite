@@ -1,7 +1,7 @@
 import Image from "next/image";
-import Link from "next/link";
 import { Eyebrow, Tagline } from "@/components/brand/eyebrow";
 import { NetherlandsMap } from "@/components/brand/netherlands-map";
+import { TrackedLink } from "@/components/analytics/tracked-link";
 import { daysUntilOpen, getApplyWindowStatus } from "@/lib/apply-dates";
 
 const houses = [
@@ -9,6 +9,7 @@ const houses = [
     name: "Rotterdam",
     href: "/rotterdam",
     image: "/images/rotterdam.jpg",
+    alt: "Aerial view of the Rotterdam skyline and Erasmusbrug at dusk",
     status: "Founding chapter",
     description: "Home base. Three coverage teams, live since 2026.",
     applyEnabled: true,
@@ -17,6 +18,7 @@ const houses = [
     name: "Eindhoven",
     href: "/eindhoven",
     image: "/images/eindhoven.jpg",
+    alt: "Eindhoven city center with the Philips building and De Blob",
     status: "Opening February 2027",
     description: "The second chapter — engineering-led, opening next.",
     applyEnabled: false,
@@ -62,7 +64,7 @@ export function JourneySection() {
           >
             <Image
               src={house.image}
-              alt=""
+              alt={house.alt}
               fill
               sizes="(min-width: 640px) 400px, 90vw"
               className="-z-10 object-cover transition-transform duration-500 group-hover:scale-105"
@@ -73,15 +75,17 @@ export function JourneySection() {
             <p className="mt-2 font-serif text-[14px] leading-relaxed text-am-bg/78">
               {house.description}
             </p>
-            <Link
-              href={house.applyEnabled ? "/apply" : house.href}
+            <TrackedLink
+              href="/apply"
+              event="apply_cta_click"
+              eventData={{ source: "journey_card", chapter: house.name }}
               className="mt-6 inline-flex w-fit items-center gap-2 border border-am-bg/70 px-5 py-2.5 font-sans text-[12px] tracking-label uppercase text-am-bg transition-all duration-200 hover:scale-[1.03] hover:bg-am-bg hover:text-am-text active:scale-[0.98]"
             >
               {house.applyEnabled ? "Apply Now" : "Register Interest"}
               <span className="transition-transform duration-300 group-hover:translate-x-1">
                 →
               </span>
-            </Link>
+            </TrackedLink>
           </div>
         ))}
       </div>

@@ -1,3 +1,7 @@
+"use client";
+
+import { track } from "@vercel/analytics";
+
 const FORM_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLSen2zlPdV2p2nNg9RKXYI9mZfccxtemxWv8wuGh5QvbnsICKQ/viewform";
 
@@ -23,6 +27,7 @@ export function GoogleFormEmbed() {
           href={FORM_URL}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => track("apply_form_opened")}
           className="inline-block border border-am-text px-6 py-3 font-sans text-[13px] tracking-label uppercase text-am-text transition-all duration-200 hover:scale-[1.03] hover:bg-am-text hover:text-am-bg active:scale-[0.98]"
         >
           Open Application Form ↗

@@ -18,10 +18,10 @@ export default function PressPage() {
         <div>
           <Tagline className="text-am-text/66">Press Inquiries</Tagline>
           <a
-            href="mailto:paretoinvestment1@gmail.com"
+            href="mailto:info@paretoinvestment.nl"
             className="mt-4 inline-block font-sans text-[13px] tracking-label uppercase text-am-accent"
           >
-            paretoinvestment1@gmail.com
+            info@paretoinvestment.nl
           </a>
         </div>
         <div>
@@ -30,10 +30,10 @@ export default function PressPage() {
             Same inbox — lead with &quot;Partnership&quot; in the subject line.
           </p>
           <a
-            href="mailto:paretoinvestment1@gmail.com?subject=Partnership%20Inquiry"
+            href="mailto:info@paretoinvestment.nl?subject=Partnership%20Inquiry"
             className="mt-4 inline-block font-sans text-[13px] tracking-label uppercase text-am-accent"
           >
-            paretoinvestment1@gmail.com
+            info@paretoinvestment.nl
           </a>
         </div>
       </div>
