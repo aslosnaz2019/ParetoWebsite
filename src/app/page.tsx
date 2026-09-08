@@ -42,7 +42,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-t from-am-text/90 via-am-text/45 to-am-text/15" />
 
           <div className="relative z-10 w-full pb-16 pt-28 sm:pb-20">
-            <Reveal className="mx-edge max-w-2xl">
+            <Reveal className="mx-edge max-w-xl">
               <Eyebrow className="text-am-bg/75">Pareto Investments</Eyebrow>
               <h1 className="mt-6 font-serif text-[32px] leading-[1.1] text-am-bg sm:text-[52px]">
                 An <em className="not-italic italic text-am-gold">independent</em> student-led
