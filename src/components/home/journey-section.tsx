@@ -67,7 +67,7 @@ export function JourneySection() {
               sizes="(min-width: 640px) 400px, 90vw"
               className="-z-10 object-cover transition-transform duration-500 group-hover:scale-105"
             />
-            <div className="absolute inset-0 -z-10 bg-am-text/72 transition-colors group-hover:bg-am-text/62" />
+            <div className="absolute inset-0 -z-10 bg-gradient-to-t from-am-text/95 via-am-text/75 to-am-text/35 transition-opacity duration-300 group-hover:opacity-90" />
             <Tagline className="text-am-gold/80">{house.status}</Tagline>
             <h3 className="mt-2 font-serif text-[22px] text-am-bg">{house.name}</h3>
             <p className="mt-2 font-serif text-[14px] leading-relaxed text-am-bg/78">

@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { BrandLockup } from "@/components/brand/brand-lockup";
 import { Tagline } from "@/components/brand/eyebrow";
@@ -71,37 +70,41 @@ function DropdownGroup({
   );
 }
 
-export function SiteHeader() {
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const pathname = usePathname();
-
-  // The homepage opens on a full-bleed hero photo, so the header starts
-  // blended into it (no background) and picks up a solid bar once the
-  // page has actually been scrolled — everywhere else it's always solid.
-  const isHome = pathname === "/";
+/** Thin gold line under the header that fills left-to-right with how far
+ *  down the page you've scrolled, instead of just sitting there static. */
+function ScrollProgressBar() {
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    if (!isHome) {
-      setScrolled(true);
-      return;
-    }
-    const onScroll = () => setScrolled(window.scrollY > 48);
+    const onScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      setProgress(docHeight > 0 ? Math.min(Math.max(scrollTop / docHeight, 0), 1) : 0);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [isHome]);
-
-  const transparent = isHome && !scrolled;
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
 
   return (
-    <header
-      className={`sticky top-0 z-50 border-b-4 transition-all duration-300 ${
-        transparent
-          ? "border-transparent bg-gradient-to-b from-am-text/55 via-am-text/18 to-transparent"
-          : "border-vc-gold bg-vc-bg/95 backdrop-blur"
-      }`}
-    >
+    <div className="h-1 w-full bg-vc-gold/25">
+      <div
+        className="h-full origin-left bg-vc-gold transition-transform duration-150 ease-out"
+        style={{ transform: `scaleX(${progress})` }}
+      />
+    </div>
+  );
+}
+
+export function SiteHeader() {
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  return (
+    <header className="sticky top-0 z-50 bg-vc-bg/95 backdrop-blur">
       <div className="mx-edge flex h-[72px] items-center justify-between">
         <Link href="/" aria-label="Pareto Investments — Home">
           <BrandLockup tone="light" />
@@ -130,6 +133,8 @@ export function SiteHeader() {
           <span className="h-px w-6 bg-vc-gold" />
         </button>
       </div>
+
+      <ScrollProgressBar />
 
       {/* Mobile menu */}
       {mobileOpen && (
