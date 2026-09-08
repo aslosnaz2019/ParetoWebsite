@@ -52,6 +52,16 @@ export const marketingTeam: Person[] = [
 
 export const eindhovenFounders: Person[] = [
   {
+    name: "Alexandros Kalligas",
+    role: "Eindhoven Founding Team",
+    bio: "Co-founder of the Pareto network — Eindhoven engineering and platform team.",
+  },
+  {
+    name: "Asli Naz Tocan",
+    role: "Eindhoven Founding Team",
+    bio: "Co-founder of the Pareto network — Eindhoven engineering and platform team.",
+  },
+  {
     name: "Bilge Yuce",
     role: "Eindhoven Founding Team",
     bio: "Co-founder of the Pareto network — Eindhoven engineering and platform team.",
@@ -66,22 +76,12 @@ export const eindhovenFounders: Person[] = [
     role: "Eindhoven Founding Team",
     bio: "Co-founder of the Pareto network — Eindhoven engineering and platform team.",
   },
-  {
-    name: "Asli Naz Tocan",
-    role: "Eindhoven Founding Team",
-    bio: "Co-founder of the Pareto network — Eindhoven engineering and platform team.",
-  },
-  {
-    name: "Alex",
-    role: "Eindhoven Founding Team",
-    bio: "Co-founder of the Pareto network — Eindhoven engineering and platform team.",
-  },
 ];
 
 export const eindhovenTeam = {
   description:
     "The Eindhoven chapter is being built by its own founding team ahead of a February 2027 launch — the second stop in Pareto's pan-Benelux design.",
   composition:
-    "Five founders leading engineering and the platform build: Bilge Yuce, Can Yenen, Sofia Zalakosta, Asli Naz Tocan, and Alex.",
+    "Five founders leading engineering and the platform build: Alexandros Kalligas, Asli Naz Tocan, Bilge Yuce, Can Yenen, and Sofia Zalakosta.",
 };
 
