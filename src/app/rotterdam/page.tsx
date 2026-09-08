@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { TrackedLink } from "@/components/analytics/tracked-link";
 import { Eyebrow, Tagline } from "@/components/brand/eyebrow";
+import { PageWatermark } from "@/components/brand/page-watermark";
 import { CoverageTeamsGrid } from "@/components/brand/coverage-teams-grid";
 
 export default function Home() {
@@ -23,7 +24,10 @@ export default function Home() {
       </section>
 
       {/* Hero */}
-      <section className="relative mx-edge pb-24 pt-4 md:pb-32">
+      <section className="relative overflow-hidden pb-24 pt-4 md:pb-32">
+        <PageWatermark />
+
+        <div className="relative z-10 mx-edge">
         <div className="mx-auto -mt-6 max-w-column text-center">
           <Tagline className="text-am-accent">Founding Chapter · Live Since 2026</Tagline>
           <Eyebrow className="mt-4 text-am-text/66">Pareto Investments · MMXXVI</Eyebrow>
@@ -45,6 +49,7 @@ export default function Home() {
               Applications open August 15
             </TrackedLink>
           </div>
+        </div>
         </div>
       </section>
 

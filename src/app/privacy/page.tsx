@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Eyebrow, Tagline } from "@/components/brand/eyebrow";
+import { PageWatermark } from "@/components/brand/page-watermark";
 
 export const metadata: Metadata = {
   title: "Privacy Policy — Pareto Investment Society",
@@ -8,18 +9,25 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <main className="mx-edge py-20 md:py-28">
-      <Eyebrow className="text-am-text/66">Privacy Policy</Eyebrow>
-      <h1 className="mt-4 max-w-column font-serif text-[36px] leading-tight text-am-text sm:text-[44px]">
-        What we collect, and why.
-      </h1>
-      <p className="mt-6 max-w-column font-serif text-[16px] leading-relaxed text-am-text/78">
-        Last updated September 2026. This page explains what personal data Pareto
-        Investment Society collects through this website, what we use it for, and how to
-        reach us about it.
-      </p>
+    <main>
+      <section className="relative overflow-hidden py-20 md:pt-28">
+        <PageWatermark />
 
-      <div className="mt-16 space-y-14">
+        <div className="relative z-10 mx-edge">
+          <Eyebrow className="text-am-text/66">Privacy Policy</Eyebrow>
+          <h1 className="mt-4 max-w-column font-serif text-[36px] leading-tight text-am-text sm:text-[44px]">
+            What we collect, and why.
+          </h1>
+          <p className="mt-6 max-w-column font-serif text-[16px] leading-relaxed text-am-text/78">
+            Last updated September 2026. This page explains what personal data Pareto
+            Investment Society collects through this website, what we use it for, and how to
+            reach us about it.
+          </p>
+        </div>
+      </section>
+
+      <div className="mx-edge pb-24 md:pb-28">
+      <div className="mt-8 space-y-14 md:mt-0">
         <div>
           <Tagline className="text-am-text/66">What We Collect</Tagline>
           <p className="mt-4 max-w-column font-serif text-[16px] leading-relaxed text-am-text/78">
@@ -75,6 +83,7 @@ export default function PrivacyPage() {
             data is handled, please get in touch using the email above.
           </p>
         </div>
+      </div>
       </div>
     </main>
   );

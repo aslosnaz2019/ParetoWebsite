@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Eyebrow, Tagline } from "@/components/brand/eyebrow";
+import { PageWatermark } from "@/components/brand/page-watermark";
 import { houseViews } from "@/lib/house-views";
 
 const paletteStyles: Record<string, { bg: string; text: string; accent: string; border: string }> = {
@@ -37,8 +38,10 @@ export default function HouseViewPage({
   const styles = paletteStyles[view.palette];
 
   return (
-    <main className={`${styles.bg} ${styles.text} min-h-[70vh]`}>
-      <div className="mx-edge py-20 md:py-28">
+    <main className={`relative overflow-hidden ${styles.bg} ${styles.text} min-h-[70vh]`}>
+      <PageWatermark dark={view.palette !== "am"} />
+
+      <div className="relative z-10 mx-edge py-20 md:py-28">
         <Eyebrow className="opacity-50">{view.fullName} · House View</Eyebrow>
 
         {view.current ? (

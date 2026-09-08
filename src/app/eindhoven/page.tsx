@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { TrackedLink } from "@/components/analytics/tracked-link";
 import { Eyebrow, Tagline } from "@/components/brand/eyebrow";
+import { PageWatermark } from "@/components/brand/page-watermark";
 import { PersonCard } from "@/components/brand/person-card";
 import { eindhovenFounders, eindhovenTeam } from "@/lib/people";
 
@@ -49,15 +50,19 @@ export default function Eindhoven() {
       </section>
 
       {/* Founding team */}
-      <section className="mx-edge py-20 md:py-28">
-        <Tagline className="text-am-text/66">Founding Team</Tagline>
-        <p className="mt-4 max-w-column font-serif text-[16px] leading-relaxed text-am-text/82">
-          {eindhovenTeam.composition}
-        </p>
-        <div className="mt-10 grid grid-cols-2 gap-10 sm:grid-cols-3">
-          {eindhovenFounders.map((person) => (
-            <PersonCard key={person.name} person={person} />
-          ))}
+      <section className="relative overflow-hidden py-20 md:py-28">
+        <PageWatermark />
+
+        <div className="relative z-10 mx-edge">
+          <Tagline className="text-am-text/66">Founding Team</Tagline>
+          <p className="mt-4 max-w-column font-serif text-[16px] leading-relaxed text-am-text/82">
+            {eindhovenTeam.composition}
+          </p>
+          <div className="mt-10 grid grid-cols-2 gap-10 sm:grid-cols-3">
+            {eindhovenFounders.map((person) => (
+              <PersonCard key={person.name} person={person} />
+            ))}
+          </div>
         </div>
       </section>
 

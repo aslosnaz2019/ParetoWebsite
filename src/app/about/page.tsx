@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { Eyebrow, Tagline } from "@/components/brand/eyebrow";
+import { PageWatermark } from "@/components/brand/page-watermark";
 import { FoundingPostureGrid } from "@/components/brand/founding-posture-grid";
 import { StatsBar } from "@/components/home/stats-bar";
 import { StockTicker } from "@/components/home/stock-ticker";
@@ -16,18 +16,7 @@ export default function AboutUs() {
   return (
     <main>
       <section className="relative overflow-hidden py-20 md:py-28">
-        <div
-          className="pointer-events-none absolute -right-16 top-1/2 hidden w-[420px] -translate-y-1/2 opacity-[0.07] sm:block md:-right-20 md:w-[560px] lg:w-[640px]"
-          aria-hidden="true"
-        >
-          <Image
-            src="/images/pareto-logo.png"
-            alt=""
-            width={1000}
-            height={998}
-            className="w-full grayscale"
-          />
-        </div>
+        <PageWatermark />
 
         <div className="relative z-10 mx-edge">
           <Eyebrow className="text-am-text/66">About Us</Eyebrow>
