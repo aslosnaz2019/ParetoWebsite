@@ -17,10 +17,10 @@ export function SiteFooter() {
             <div className="flex flex-col gap-2">
               <Tagline className="text-vc-gold/60">Contact</Tagline>
               <a
-                href="mailto:paretiinvestment1@gmail.com"
+                href="mailto:info@paretoinvestment.nl"
                 className="font-serif text-[15px] text-vc-gold hover:text-vc-accent"
               >
-                paretiinvestment1@gmail.com
+                info@paretoinvestment.nl
               </a>
               <Link
                 href="/press"
