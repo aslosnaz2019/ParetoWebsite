@@ -3,19 +3,19 @@ import Link from "next/link";
 import { Eyebrow, Tagline } from "@/components/brand/eyebrow";
 import { CoverageTeamsGrid } from "@/components/brand/coverage-teams-grid";
 import { FoundingPostureGrid } from "@/components/brand/founding-posture-grid";
-import { ApplyTeaser } from "@/components/home/apply-teaser";
-import { HubsSection } from "@/components/home/hubs-section";
+import { JourneySection } from "@/components/home/journey-section";
+import { StatsBar } from "@/components/home/stats-bar";
 import { StockTicker } from "@/components/home/stock-ticker";
 import { Reveal } from "@/components/reveal";
 
-const snapSection =
-  "mx-edge flex min-h-0 flex-col justify-center py-16 sm:min-h-[50vh] sm:py-10 sm:snap-start sm:scroll-mt-[72px]";
+const section = "mx-edge py-20 md:py-28";
+const sectionDivider = `${section} border-t border-am-text/10`;
 
 export default function Home() {
   return (
     <main>
       {/* Hero — full-bleed, split Rotterdam / Eindhoven photography */}
-      <section className="relative left-1/2 w-screen -translate-x-1/2 sm:snap-start sm:scroll-mt-[72px]">
+      <section className="relative left-1/2 w-screen -translate-x-1/2">
         <div className="relative flex h-[82vh] min-h-[560px] items-end overflow-hidden">
           <div className="absolute inset-0 grid grid-cols-2">
             <div className="relative">
@@ -73,8 +73,51 @@ export default function Home() {
         </div>
       </section>
 
+      {/* About Us */}
+      <section className={section}>
+        <Reveal className="mx-auto w-full max-w-4xl">
+          <Eyebrow className="text-am-text/66">About Us</Eyebrow>
+          <h2 className="mt-3 max-w-column font-serif text-[26px] leading-tight text-am-text sm:text-[32px]">
+            An independent society, built for the long run.
+          </h2>
+          <p className="mt-5 max-w-column font-serif text-[16px] leading-relaxed text-am-text/78">
+            Pareto Investments is a student-led investment society founded in Rotterdam in
+            2026, designed from day one for pan-Benelux expansion. Capped membership.
+            Published research. No shortcuts.
+          </p>
+          <Link
+            href="/about"
+            className="mt-6 inline-block font-sans text-[12px] tracking-label uppercase text-am-accent"
+          >
+            Learn more about us →
+          </Link>
+          <div className="mt-14">
+            <StatsBar />
+          </div>
+        </Reveal>
+      </section>
+
+      {/* Society / founding posture */}
+      <section className={sectionDivider}>
+        <Reveal className="mx-auto w-full max-w-5xl">
+          <Tagline className="text-am-text/66">Society</Tagline>
+          <h2 className="mt-3 max-w-column font-serif text-[26px] leading-tight text-am-text sm:text-[32px]">
+            The discipline is the <em className="italic text-am-accent">brand</em>.
+          </h2>
+          <div className="mt-10">
+            <FoundingPostureGrid />
+          </div>
+          <Link
+            href="/about"
+            className="mt-10 inline-block font-sans text-[12px] tracking-label uppercase text-am-accent"
+          >
+            Read the full mission →
+          </Link>
+        </Reveal>
+      </section>
+
       {/* Coverage teams / departments */}
-      <section className={snapSection}>
+      <section className={sectionDivider}>
         <Reveal className="mx-auto w-full max-w-4xl">
           <Tagline className="text-am-text/66">Coverage Teams</Tagline>
           <h2 className="mt-3 max-w-column font-serif text-[26px] leading-tight text-am-text sm:text-[32px]">
@@ -92,36 +135,10 @@ export default function Home() {
         </Reveal>
       </section>
 
-      {/* Founding posture */}
-      <section className={snapSection}>
-        <Reveal className="mx-auto w-full max-w-5xl">
-          <Tagline className="text-am-text/66">Founding Posture</Tagline>
-          <h2 className="mt-3 max-w-column font-serif text-[26px] leading-tight text-am-text sm:text-[32px]">
-            The discipline is the <em className="italic text-am-accent">brand</em>.
-          </h2>
-          <div className="mt-10">
-            <FoundingPostureGrid />
-          </div>
-          <Link
-            href="/about"
-            className="mt-10 inline-block font-sans text-[12px] tracking-label uppercase text-am-accent"
-          >
-            Read the full mission →
-          </Link>
-        </Reveal>
-      </section>
-
-      {/* Apply */}
-      <section className={snapSection}>
+      {/* Your journey starts here — the two chapters, framed as the application entry point */}
+      <section className={sectionDivider}>
         <Reveal className="mx-auto w-full max-w-4xl">
-          <ApplyTeaser />
-        </Reveal>
-      </section>
-
-      {/* Hubs — kept last, right above the footer */}
-      <section className={snapSection}>
-        <Reveal className="mx-auto w-full max-w-4xl">
-          <HubsSection />
+          <JourneySection />
         </Reveal>
       </section>
     </main>

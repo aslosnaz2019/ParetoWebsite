@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { BrandLockup } from "@/components/brand/brand-lockup";
 import { Tagline } from "@/components/brand/eyebrow";
 
@@ -72,9 +73,35 @@ function DropdownGroup({
 
 export function SiteHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+
+  // The homepage opens on a full-bleed hero photo, so the header starts
+  // blended into it (no background) and picks up a solid bar once the
+  // page has actually been scrolled — everywhere else it's always solid.
+  const isHome = pathname === "/";
+
+  useEffect(() => {
+    if (!isHome) {
+      setScrolled(true);
+      return;
+    }
+    const onScroll = () => setScrolled(window.scrollY > 48);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [isHome]);
+
+  const transparent = isHome && !scrolled;
 
   return (
-    <header className="sticky top-0 z-50 border-b-4 border-vc-gold bg-vc-bg/95 backdrop-blur">
+    <header
+      className={`sticky top-0 z-50 border-b-4 transition-all duration-300 ${
+        transparent
+          ? "border-transparent bg-gradient-to-b from-am-text/55 via-am-text/18 to-transparent"
+          : "border-vc-gold bg-vc-bg/95 backdrop-blur"
+      }`}
+    >
       <div className="mx-edge flex h-[72px] items-center justify-between">
         <Link href="/" aria-label="Pareto Investments — Home">
           <BrandLockup tone="light" />
