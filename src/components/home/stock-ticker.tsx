@@ -5,10 +5,13 @@ import { Tagline } from "@/components/brand/eyebrow";
 import { SAMPLE_QUOTES, type Quote } from "@/lib/market-data";
 
 /**
- * A slow, continuous scroll of coverage-adjacent tickers. Falls back to
- * clearly-labelled sample data until FINNHUB_API_KEY is configured — see
- * .env.local.example. `dark` renders it for placement directly on a dark
- * (photo hero) background instead of the default parchment page.
+ * A slow, continuous scroll of coverage-adjacent tickers. Until
+ * FINNHUB_API_KEY is configured (see .env.local.example) this shows only
+ * the tracked symbols and names — no invented prices or percentage moves,
+ * since fabricated numbers next to real company tickers would read as
+ * real quotes on a public investment-society site. `dark` renders it for
+ * placement directly on a dark (photo hero) background instead of the
+ * default parchment page.
  */
 export function StockTicker({ dark = false }: { dark?: boolean }) {
   const [quotes, setQuotes] = useState<Quote[]>(SAMPLE_QUOTES);
@@ -38,6 +41,7 @@ export function StockTicker({ dark = false }: { dark?: boolean }) {
   const dotOff = dark ? "bg-am-bg/30" : "bg-am-text/30";
   const label = dark ? "text-am-bg/65" : "text-am-text/60";
   const symbol = dark ? "text-am-bg/70" : "text-am-text/66";
+  const name = dark ? "text-am-bg/50" : "text-am-text/45";
   const price = dark ? "text-am-bg" : "text-am-text";
   const positive = dark ? "text-emerald-400" : "text-emerald-700";
   const negative = dark ? "text-am-gold" : "text-am-accent";
@@ -49,7 +53,7 @@ export function StockTicker({ dark = false }: { dark?: boolean }) {
           className={`h-1.5 w-1.5 rounded-full ${isLive ? "bg-am-accent" : dotOff}`}
           aria-hidden="true"
         />
-        <Tagline className={label}>{isLive ? "Live Market" : "Sample Market Data"}</Tagline>
+        <Tagline className={label}>{isLive ? "Live Market" : "Live Pricing Coming Soon"}</Tagline>
       </div>
 
       <div className="group relative overflow-hidden">
@@ -59,15 +63,24 @@ export function StockTicker({ dark = false }: { dark?: boolean }) {
               <span className={`font-sans text-[12px] tracking-label uppercase ${symbol}`}>
                 {q.symbol}
               </span>
-              <span className={`font-serif text-[15px] ${price}`}>
-                {q.price.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-              </span>
-              <span
-                className={`font-sans text-[12px] ${q.changePercent >= 0 ? positive : negative}`}
-              >
-                {q.changePercent >= 0 ? "+" : ""}
-                {q.changePercent.toFixed(1)}%
-              </span>
+              {isLive ? (
+                <>
+                  <span className={`font-serif text-[15px] ${price}`}>
+                    {q.price.toLocaleString("en-US", {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}
+                  </span>
+                  <span
+                    className={`font-sans text-[12px] ${q.changePercent >= 0 ? positive : negative}`}
+                  >
+                    {q.changePercent >= 0 ? "+" : ""}
+                    {q.changePercent.toFixed(1)}%
+                  </span>
+                </>
+              ) : (
+                <span className={`font-serif text-[13px] italic ${name}`}>{q.name}</span>
+              )}
             </div>
           ))}
         </div>
