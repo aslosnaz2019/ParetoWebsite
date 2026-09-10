@@ -1,5 +1,9 @@
 import Link from "next/link";
-import { BELGIUM_PATH, NL_PROVINCE_PATHS, NL_VIEWBOX } from "@/lib/netherlands-paths";
+import {
+  BELGIUM_PROVINCE_PATHS,
+  NL_PROVINCE_PATHS,
+  NL_VIEWBOX,
+} from "@/lib/netherlands-paths";
 
 type CityPin = {
   name: string;
@@ -16,8 +20,10 @@ type CityPin = {
 
 // Coordinates are approximate, hand-placed within the correct province
 // (Rotterdam in Zuid-Holland, Eindhoven in Noord-Brabant) — not surveyed.
-// Leuven sits inside the schematic Belgium silhouette below the Netherlands
-// outline, which is illustrative rather than a real border trace.
+// Leuven's coordinates are projected from its real lon/lat using the same
+// affine transform calibrated against these two pins (see
+// netherlands-paths.ts), so it lands inside the real Vlaams Brabant
+// province shape below.
 const cities: CityPin[] = [
   {
     name: "Rotterdam",
@@ -40,8 +46,8 @@ const cities: CityPin[] = [
   {
     name: "Leuven",
     href: "/belgium",
-    x: 100,
-    y: 271,
+    x: 68.5,
+    y: 236.9,
     labelAnchor: "start",
     labelDx: 7,
     status: "Coming soon",
@@ -50,11 +56,11 @@ const cities: CityPin[] = [
 ];
 
 /**
- * Real (simplified) outline of the Netherlands' twelve provinces, styled to
- * match the brand system, with Rotterdam, Eindhoven, and Leuven marked as
- * clickable navigation points. Belgium itself is drawn as a deliberately
- * schematic silhouette (dashed, muted) since it exists here only to host
- * the future Leuven marker, not as a surveyed boundary.
+ * Real (simplified) outline of the Netherlands' twelve provinces and
+ * Belgium's provinces (plus Brussels), styled to match the brand system,
+ * with Rotterdam, Eindhoven, and Leuven marked as clickable navigation
+ * points. Both countries are real, surveyed administrative geometry
+ * rendered in one shared coordinate space — see netherlands-paths.ts.
  */
 export function NetherlandsMap() {
   return (
@@ -66,7 +72,7 @@ export function NetherlandsMap() {
     >
       {NL_PROVINCE_PATHS.map((d, i) => (
         <path
-          key={i}
+          key={`nl-${i}`}
           d={d}
           fill="#C8AF6E"
           fillOpacity={0.35}
@@ -76,17 +82,17 @@ export function NetherlandsMap() {
         />
       ))}
 
-      {/* Belgium — schematic only, styled distinctly to read as "not surveyed" */}
-      <path
-        d={BELGIUM_PATH}
-        fill="#C8AF6E"
-        fillOpacity={0.12}
-        stroke="#F5F0E6"
-        strokeOpacity={0.7}
-        strokeWidth={0.6}
-        strokeDasharray="2.6 2.2"
-        strokeLinejoin="round"
-      />
+      {BELGIUM_PROVINCE_PATHS.map((d, i) => (
+        <path
+          key={`be-${i}`}
+          d={d}
+          fill="#C8AF6E"
+          fillOpacity={0.35}
+          stroke="#F5F0E6"
+          strokeWidth={0.6}
+          strokeLinejoin="round"
+        />
+      ))}
 
       {/* City pins — hover or focus reveals each chapter's status */}
       {cities.map((city) => (
