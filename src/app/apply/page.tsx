@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Eyebrow, Tagline } from "@/components/brand/eyebrow";
 import { PageWatermark } from "@/components/brand/page-watermark";
 import { GoogleFormEmbed } from "@/components/apply/google-form-embed";
+import { FaqAccordion } from "@/components/apply/faq-accordion";
 import { getApplyWindowStatus, daysUntilOpen } from "@/lib/apply-dates";
 
 export const metadata: Metadata = {
@@ -20,7 +21,8 @@ export const dynamic = "force-dynamic";
 const selectionStages = [
   {
     name: "Application form",
-    detail: "The short form below, plus a one-paragraph thesis pitch — the stock, deal, or company you'd cover and why.",
+    detail:
+      "The short form below, plus a one-paragraph thesis pitch — the stock, deal, or company you'd cover and why.",
   },
   {
     name: "Case screen",
@@ -72,6 +74,7 @@ export default function ApplyPage({
 
   return (
     <main>
+      {/* 1. Heading + deadline — the whole point of the page, up top */}
       <section className="relative overflow-hidden py-20 md:pt-28">
         <PageWatermark />
 
@@ -80,12 +83,65 @@ export default function ApplyPage({
           <h1 className="mt-4 max-w-column font-serif text-[36px] leading-tight text-am-text sm:text-[44px]">
             Show us how you <em className="italic text-am-accent">think</em>.
           </h1>
+          <p className="mt-5 max-w-column font-serif text-[16px] leading-relaxed text-am-text/75">
+            {chapter === "eindhoven"
+              ? "Eindhoven opens February 2027 — this cohort isn't taking applications yet."
+              : status === "before"
+                ? `Rotterdam applications open in ${daysUntilOpen()} days — the form goes live August 15 and closes September 20.`
+                : status === "open"
+                  ? "Rotterdam applications are open now, through September 20."
+                  : "Rotterdam applications are closed for this cohort. The next one opens August 2027."}
+          </p>
         </div>
       </section>
 
       <div className="mx-edge pb-24 md:pb-28">
-        {/* Quick facts: who can apply, positions, time commitment */}
-        <section className="mt-8 grid grid-cols-1 gap-10 sm:grid-cols-3 md:mt-0">
+        {/* 2. Apply button / form — first thing below the fold, no scrolling required */}
+        <section>
+          {chapter === "eindhoven" ? (
+            <div className="max-w-column">
+              <p className="font-serif text-[20px] text-am-text">Eindhoven opens February 2027.</p>
+              <p className="mt-4 font-serif text-[15px] leading-relaxed text-am-text/72">
+                The Eindhoven chapter isn&apos;t taking applications for this cohort. Email
+                us and we&apos;ll reach out directly once that window opens — nothing here
+                submits an Eindhoven application.
+              </p>
+              <a
+                href="mailto:info@paretoinvestment.nl?subject=Eindhoven%20interest"
+                className="mt-8 inline-block border border-am-text px-6 py-3 font-sans text-[13px] tracking-label uppercase text-am-text transition-all duration-200 hover:scale-[1.03] hover:bg-am-text hover:text-am-bg active:scale-[0.98]"
+              >
+                Register Interest ↗
+              </a>
+            </div>
+          ) : (
+            <>
+              {status === "before" && (
+                <div className="max-w-column">
+                  <p className="font-serif text-[20px] text-am-text">
+                    Applications open in {daysUntilOpen()} days.
+                  </p>
+                  <p className="mt-4 font-serif text-[15px] leading-relaxed text-am-text/72">
+                    The form goes live August 15 and closes September 20.
+                  </p>
+                </div>
+              )}
+
+              {status === "closed" && (
+                <div className="max-w-column">
+                  <p className="font-serif text-[20px] text-am-text">Applications closed.</p>
+                  <p className="mt-4 font-serif text-[15px] leading-relaxed text-am-text/72">
+                    The next cohort applications open August 2027.
+                  </p>
+                </div>
+              )}
+
+              {status === "open" && <GoogleFormEmbed />}
+            </>
+          )}
+        </section>
+
+        {/* 3. Three quick facts */}
+        <section className="mt-20 grid grid-cols-1 gap-10 border-t border-am-text/10 pt-16 sm:grid-cols-3">
           <div>
             <Tagline className="text-am-text/66">Who Can Apply</Tagline>
             <p className="mt-4 font-serif text-[15px] leading-relaxed text-am-text/78">
@@ -110,9 +166,9 @@ export default function ApplyPage({
           </div>
         </section>
 
-        {/* Selection stages + interview dates */}
-        <section className="mt-20 max-w-column">
-          <Tagline className="text-am-text/66">Selection Stages</Tagline>
+        {/* 4. Selection process — stages, what you're evaluated on, interview dates */}
+        <section className="mt-20 max-w-column border-t border-am-text/10 pt-16">
+          <Tagline className="text-am-text/66">Selection Process</Tagline>
           <h2 className="mt-3 font-serif text-[24px] leading-tight text-am-text">
             Three stages, same bar for every committee.
           </h2>
@@ -128,16 +184,8 @@ export default function ApplyPage({
               </li>
             ))}
           </ol>
-          <p className="mt-8 font-serif text-[14px] leading-relaxed text-am-text/62">
-            Interview dates: there&apos;s no fixed interview week — slots are scheduled on a
-            rolling basis after the form closes on September 20, and sent by email once
-            a committee lead has reviewed your application.
-          </p>
-        </section>
 
-        {/* What applicants are evaluated on */}
-        <section className="mt-20 max-w-column border-t border-am-text/10 pt-16">
-          <Tagline className="text-am-text/66">What You&apos;re Evaluated On</Tagline>
+          <Tagline className="mt-12 text-am-text/66">What You&apos;re Evaluated On</Tagline>
           <ul className="mt-6 space-y-3">
             {evaluationCriteria.map((item) => (
               <li
@@ -148,6 +196,12 @@ export default function ApplyPage({
               </li>
             ))}
           </ul>
+
+          <p className="mt-8 font-serif text-[14px] leading-relaxed text-am-text/62">
+            Interview dates: there&apos;s no fixed interview week — slots are scheduled on a
+            rolling basis after the form closes on September 20, and sent by email once
+            a committee lead has reviewed your application.
+          </p>
         </section>
 
         {/* Rotterdam vs Eindhoven availability */}
@@ -160,7 +214,7 @@ export default function ApplyPage({
               </p>
               <p className="mt-3 font-serif text-[15px] leading-relaxed text-am-text/78">
                 Taking applications now, through September 20, 2026. This is the form
-                below.
+                above.
               </p>
             </div>
             <div className="border border-am-text/15 p-6">
@@ -175,69 +229,10 @@ export default function ApplyPage({
           </div>
         </section>
 
-        {/* FAQ */}
+        {/* 5. FAQ — expandable rows, one open at a time */}
         <section className="mt-20 max-w-column border-t border-am-text/10 pt-16">
           <Tagline className="text-am-text/66">FAQ</Tagline>
-          <dl className="mt-8 space-y-8">
-            {faqs.map((item) => (
-              <div key={item.q}>
-                <dt className="font-serif text-[17px] text-am-text">{item.q}</dt>
-                <dd className="mt-2 font-serif text-[15px] leading-relaxed text-am-text/75">
-                  {item.a}
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </section>
-
-        {/* Application form / interest registration */}
-        <section className="mt-20 border-t border-am-text/10 pt-16">
-          {chapter === "eindhoven" ? (
-            <div className="mt-8 max-w-column md:mt-0">
-              <p className="font-serif text-[20px] text-am-text">
-                Eindhoven opens February 2027.
-              </p>
-              <p className="mt-4 font-serif text-[15px] leading-relaxed text-am-text/72">
-                The Eindhoven chapter isn&apos;t taking applications for this cohort.
-                Email us and we&apos;ll reach out directly once that window opens —
-                nothing here submits an Eindhoven application.
-              </p>
-              <a
-                href="mailto:info@paretoinvestment.nl?subject=Eindhoven%20interest"
-                className="mt-8 inline-block border border-am-text px-6 py-3 font-sans text-[13px] tracking-label uppercase text-am-text transition-all duration-200 hover:scale-[1.03] hover:bg-am-text hover:text-am-bg active:scale-[0.98]"
-              >
-                Register Interest ↗
-              </a>
-            </div>
-          ) : (
-            <>
-              {status === "before" && (
-                <div className="mt-8 max-w-column md:mt-0">
-                  <p className="font-serif text-[20px] text-am-text">
-                    Applications open in {daysUntilOpen()} days.
-                  </p>
-                  <p className="mt-4 font-serif text-[15px] leading-relaxed text-am-text/72">
-                    The form goes live August 15 and closes September 20.
-                  </p>
-                </div>
-              )}
-
-              {status === "closed" && (
-                <div className="mt-8 max-w-column md:mt-0">
-                  <p className="font-serif text-[20px] text-am-text">Applications closed.</p>
-                  <p className="mt-4 font-serif text-[15px] leading-relaxed text-am-text/72">
-                    The next cohort applications open August 2027.
-                  </p>
-                </div>
-              )}
-
-              {status === "open" && (
-                <div className="mt-8 md:mt-0">
-                  <GoogleFormEmbed />
-                </div>
-              )}
-            </>
-          )}
+          <FaqAccordion items={faqs} />
         </section>
       </div>
     </main>

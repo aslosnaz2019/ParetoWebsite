@@ -195,6 +195,46 @@ export default function Home() {
         </Reveal>
       </section>
 
+
+      {/* Latest From Pareto — a dark editorial break from the parchment
+          sections above. No report has published yet (the first quarterly
+          drop is December 2026, per /research), so this stays honest about
+          that instead of dressing up a placeholder as a real headline. */}
+      <section className="relative left-1/2 w-screen -translate-x-1/2 bg-vc-bg py-20 md:py-28">
+        <Reveal className="mx-edge mx-auto max-w-5xl">
+          <Tagline className="text-vc-gold">Latest From Pareto</Tagline>
+          <h2 className="mt-3 max-w-column font-serif text-[26px] leading-tight text-vc-text sm:text-[32px]">
+            The first quarterly drop publishes{" "}
+            <em className="not-italic italic text-vc-accent">December 2026</em>.
+          </h2>
+          <div className="mt-10 grid grid-cols-1 gap-10 border border-vc-text/15 p-8 sm:grid-cols-[1.3fr_1fr] sm:p-12">
+            <div>
+              <p className="font-sans text-[12px] tracking-label uppercase text-vc-gold/80">
+                Asset Management · Private Equity · Venture Capital
+              </p>
+              <p className="mt-4 max-w-column font-serif text-[20px] leading-snug text-vc-text sm:text-[24px]">
+                Full-length theses, published under the society&apos;s public standard —
+                nothing goes out that hasn&apos;t been defended in front of the investment
+                committee first.
+              </p>
+              <Link
+                href="/research"
+                className="mt-6 inline-block font-sans text-[12px] tracking-label uppercase text-vc-accent transition-colors hover:text-vc-text"
+              >
+                Read the research standard →
+              </Link>
+            </div>
+            <div className="flex flex-col items-center justify-center border border-dashed border-vc-text/25 p-8 text-center">
+              <p className="font-serif text-[15px] italic text-vc-text/70">
+                Empty by design, for now.
+              </p>
+              <p className="mt-2 font-sans text-[12px] tracking-label uppercase text-vc-text/50">
+                First report — December 2026
+              </p>
+            </div>
+          </div>
+        </Reveal>
+      </section>
       {/* Your journey starts here — the two chapters, framed as the application entry point */}
       <section className={sectionDivider}>
         <Reveal className="mx-auto w-full max-w-4xl">
