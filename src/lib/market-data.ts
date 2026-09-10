@@ -6,19 +6,17 @@ export interface Quote {
 }
 
 /**
- * Symbols with a deliberate tie to the society: Philips and ASML anchor
- * Eindhoven, ING/Unilever/Adyen/Prosus anchor Rotterdam/Benelux, and KKR /
- * Blackstone represent the Private Equity coverage team.
+ * Symbols with a deliberate tie to the society: ASML anchors Eindhoven, and
+ * KKR / Blackstone represent the Private Equity coverage team. Limited to
+ * US-listed names because Finnhub's free tier only grants live quote access
+ * for US exchanges — Amsterdam-listed tickers (Philips, ING, Prosus,
+ * Heineken, Adyen) returned "you don't have access to this resource" and
+ * were dropped rather than shown with fabricated prices.
  */
 export const TICKER_SYMBOLS: { symbol: string; name: string }[] = [
   { symbol: "ASML", name: "ASML Holding" },
-  { symbol: "PHIA.AS", name: "Philips" },
-  { symbol: "INGA.AS", name: "ING Group" },
-  { symbol: "PRX.AS", name: "Prosus" },
-  { symbol: "HEIA.AS", name: "Heineken" },
   { symbol: "KKR", name: "KKR & Co." },
   { symbol: "BX", name: "Blackstone" },
-  { symbol: "ADYEN.AS", name: "Adyen" },
 ];
 
 /**
@@ -28,13 +26,8 @@ export const TICKER_SYMBOLS: { symbol: string; name: string }[] = [
  */
 export const SAMPLE_QUOTES: Quote[] = [
   { symbol: "ASML", name: "ASML Holding", price: 968.4, changePercent: 1.2 },
-  { symbol: "PHIA.AS", name: "Philips", price: 28.6, changePercent: -0.4 },
-  { symbol: "INGA.AS", name: "ING Group", price: 17.85, changePercent: 0.6 },
-  { symbol: "PRX.AS", name: "Prosus", price: 41.3, changePercent: 2.1 },
-  { symbol: "HEIA.AS", name: "Heineken", price: 74.2, changePercent: -0.2 },
   { symbol: "KKR", name: "KKR & Co.", price: 132.7, changePercent: 0.9 },
   { symbol: "BX", name: "Blackstone", price: 158.1, changePercent: -1.1 },
-  { symbol: "ADYEN.AS", name: "Adyen", price: 1620.0, changePercent: 3.4 },
 ];
 
 export async function getQuotes(): Promise<{ quotes: Quote[]; isLive: boolean }> {
